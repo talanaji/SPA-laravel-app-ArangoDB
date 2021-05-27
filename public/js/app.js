@@ -1834,6 +1834,121 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/app.js":
+/*!*****************************!*\
+  !*** ./resources/js/app.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_MyHeader_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/MyHeader.vue */ "./resources/js/components/MyHeader.vue");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
+
+
+
+
+
+window.Swal = (sweetalert2__WEBPACK_IMPORTED_MODULE_1___default());
+var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  onOpen: function onOpen(toast) {
+    toast.addEventListener('mouseenter', (sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().stopTimer));
+    toast.addEventListener('mouseleave', (sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().resumeTimer));
+  }
+});
+window.Toast = Toast;
+vue__WEBPACK_IMPORTED_MODULE_3__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_4__.default);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
+  mode: 'history',
+  routes: _routes__WEBPACK_IMPORTED_MODULE_2__.default
+});
+var app = new vue__WEBPACK_IMPORTED_MODULE_3__.default({
+  el: '#app',
+  router: router,
+  components: {
+    "my-header": _components_MyHeader_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/bootstrap.js":
+/*!***********************************!*\
+  !*** ./resources/js/bootstrap.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+try {
+  window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js").default;
+  window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+  __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
+} catch (e) {}
+/**
+ * We'll load the axios HTTP library which allows us to easily issue requests
+ * to our Laravel back-end. This library automatically handles sending the
+ * CSRF token as a header based on the value of the "XSRF" token cookie.
+ */
+
+
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+/**
+ * Echo exposes an expressive API for subscribing to channels and listening
+ * for events that are broadcast by Laravel. Echo and event broadcasting
+ * allows your team to easily build robust real-time web applications.
+ */
+// import Echo from 'laravel-echo';
+// window.Pusher = require('pusher-js');
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: process.env.MIX_PUSHER_APP_KEY,
+//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//     forceTLS: true
+// });
+
+/***/ }),
+
+/***/ "./resources/js/routes.js":
+/*!********************************!*\
+  !*** ./resources/js/routes.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _components_Listings_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Listings.vue */ "./resources/js/components/Listings.vue");
+
+var routes = [{
+  path: '/listings',
+  component: _components_Listings_vue__WEBPACK_IMPORTED_MODULE_0__.default
+}];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Listings.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Listings.vue?vue&type=script&lang=js& ***!
@@ -1956,18 +2071,138 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       list: {
-        id: '',
-        title: '',
-        price: '',
-        area: '',
-        address: '',
-        name: '',
-        email: '',
-        phoneNumber: ''
+        id: "",
+        title: "",
+        price: "",
+        area: "",
+        address: "",
+        name: "",
+        email: "",
+        phoneNumber: ""
       },
       listings: {},
       edit: false,
@@ -1979,26 +2214,26 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.edit = false;
-      axios.post('listAPI', this.list).then(function (response) {
-        if (response.data.status == 'error') {
+      axios.post("listAPI", this.list).then(function (response) {
+        if (response.data.status == "error") {
           _this.errors = response.data.errors;
-        } else if (response.data.status == 'success') {
+        } else if (response.data.status == "success") {
           console.log(response);
           console.log("response.data");
           console.log(response.data.data);
           _this.listings = response.data.data;
           Toast.fire({
-            icon: 'success',
-            title: 'Inserted Successfully'
+            icon: "success",
+            title: "Inserted Successfully"
           });
-          $("#exampleModal").modal('hide');
+          $("#exampleModal").modal("hide");
         }
       });
     },
     getListing: function getListing() {
       var _this2 = this;
 
-      axios.get('listAPI').then(function (response) {
+      axios.get("listAPI").then(function (response) {
         _this2.listings = response.data.data;
       });
     },
@@ -2009,30 +2244,30 @@ __webpack_require__.r(__webpack_exports__);
     updateListing: function updateListing() {
       var _this3 = this;
 
-      axios.put('listAPI/' + this.list._key, this.list).then(function (response) {
-        if (response.data.status != '200') {
+      axios.put("listAPI/" + this.list._key, this.list).then(function (response) {
+        if (response.data.status != "200") {
           _this3.errors = response.data.errors;
-        } else if (response.data.status == '200') {
+        } else if (response.data.status == "200") {
           Toast.fire({
-            icon: 'success',
-            title: 'Updated Successfully'
+            icon: "success",
+            title: "Updated Successfully"
           });
-          $("#exampleModal").modal('hide');
+          $("#exampleModal").modal("hide");
         }
       });
     },
     deleteListing: function deleteListing(list) {
       var _this4 = this;
 
-      axios["delete"]('listAPI/' + list._key).then(function (response) {
-        if (response.data.status != '200') {
+      axios["delete"]("listAPI/" + list._key).then(function (response) {
+        if (response.data.status != "200") {
           _this4.errors = response.data.errors;
-        } else if (response.data.status == '200') {
+        } else if (response.data.status == "200") {
           _this4.listings.pop(list);
 
           Toast.fire({
-            icon: 'success',
-            title: 'Deleted Successfully'
+            icon: "success",
+            title: "Deleted Successfully"
           });
         }
       });
@@ -2042,121 +2277,6 @@ __webpack_require__.r(__webpack_exports__);
     this.getListing();
   }
 });
-
-/***/ }),
-
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_MyHeader_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/MyHeader.vue */ "./resources/js/components/MyHeader.vue");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
-
-
-
-
-
-window.Swal = (sweetalert2__WEBPACK_IMPORTED_MODULE_1___default());
-var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 3000,
-  timerProgressBar: true,
-  onOpen: function onOpen(toast) {
-    toast.addEventListener('mouseenter', (sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().stopTimer));
-    toast.addEventListener('mouseleave', (sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().resumeTimer));
-  }
-});
-window.Toast = Toast;
-vue__WEBPACK_IMPORTED_MODULE_3__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_4__.default);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
-  mode: 'history',
-  routes: _routes__WEBPACK_IMPORTED_MODULE_2__.default
-});
-var app = new vue__WEBPACK_IMPORTED_MODULE_3__.default({
-  el: '#app',
-  router: router,
-  components: {
-    Myheader: _components_MyHeader_vue__WEBPACK_IMPORTED_MODULE_0__.default
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/js/bootstrap.js":
-/*!***********************************!*\
-  !*** ./resources/js/bootstrap.js ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
-
-try {
-  window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js").default;
-  window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-
-  __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
-} catch (e) {}
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
-
-
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-// import Echo from 'laravel-echo';
-// window.Pusher = require('pusher-js');
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
-// });
-
-/***/ }),
-
-/***/ "./resources/js/routes.js":
-/*!********************************!*\
-  !*** ./resources/js/routes.js ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _components_Listings_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Listings.vue */ "./resources/js/components/Listings.vue");
-
-var routes = [{
-  path: '/listings',
-  component: _components_Listings_vue__WEBPACK_IMPORTED_MODULE_0__.default
-}];
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);
 
 /***/ }),
 
@@ -40788,7 +40908,7 @@ var render = function() {
           "data-target": "#exampleModal"
         }
       },
-      [_vm._v("\n    Add New Listing\n    ")]
+      [_vm._v("\n    Add New Listing\n  ")]
     ),
     _vm._v(" "),
     _c(
@@ -40817,7 +40937,7 @@ var render = function() {
                         staticClass: "modal-title",
                         attrs: { id: "exampleModalLabel" }
                       },
-                      [_vm._v("Update")]
+                      [_vm._v("\n            Update\n          ")]
                     )
                   : _c(
                       "h5",
@@ -40825,7 +40945,7 @@ var render = function() {
                         staticClass: "modal-title",
                         attrs: { id: "exampleModalLabel" }
                       },
-                      [_vm._v("Add")]
+                      [_vm._v("\n            Add\n          ")]
                     ),
                 _vm._v(" "),
                 _vm._m(0)
@@ -41095,7 +41215,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Update")]
+                      [_vm._v("\n            Update\n          ")]
                     )
                   : _c(
                       "button",
@@ -41104,7 +41224,7 @@ var render = function() {
                         attrs: { type: "submit" },
                         on: { click: _vm.createListing }
                       },
-                      [_vm._v("Add")]
+                      [_vm._v("\n            Add\n          ")]
                     )
               ])
             ])
@@ -41119,21 +41239,21 @@ var render = function() {
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.listings, function(list) {
-            return _c("tr", { key: list.id }, [
-              _c("td", [_vm._v(_vm._s(list.title))]),
+          _vm._l(_vm.listings, function(l) {
+            return _c("tr", { key: l.id }, [
+              _c("td", [_vm._v(_vm._s(l.title))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(list.price))]),
+              _c("td", [_vm._v(_vm._s(l.price))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(list.area))]),
+              _c("td", [_vm._v(_vm._s(l.area))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(list.address))]),
+              _c("td", [_vm._v(_vm._s(l.address))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(list.email))]),
+              _c("td", [_vm._v(_vm._s(l.email))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(list.name))]),
+              _c("td", [_vm._v(_vm._s(l.name))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(list.phoneNumber))]),
+              _c("td", [_vm._v(_vm._s(l.phoneNumber))]),
               _vm._v(" "),
               _c("td", [
                 _c(
@@ -41147,15 +41267,11 @@ var render = function() {
                     },
                     on: {
                       click: function($event) {
-                        return _vm.editListing(list)
+                        return _vm.editListing(_vm.list)
                       }
                     }
                   },
-                  [
-                    _vm._v(
-                      "\n                            Edit\n                        "
-                    )
-                  ]
+                  [_vm._v("\n              Edit\n            ")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -41165,15 +41281,11 @@ var render = function() {
                     attrs: { type: "button" },
                     on: {
                       click: function($event) {
-                        return _vm.deleteListing(list)
+                        return _vm.deleteListing(_vm.list)
                       }
                     }
                   },
-                  [
-                    _vm._v(
-                      "\n                            Delete\n                        "
-                    )
-                  ]
+                  [_vm._v("\n              Delete\n            ")]
                 )
               ])
             ])
@@ -41207,7 +41319,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("div", { staticClass: "input-group-text" }, [_vm._v("$")])
+      _c("div", { staticClass: "input-group-text" }, [
+        _vm._v("\n                  $\n                ")
+      ])
     ])
   },
   function() {
@@ -41215,7 +41329,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("div", { staticClass: "input-group-text" }, [_vm._v("+46")])
+      _c("div", { staticClass: "input-group-text" }, [
+        _vm._v("\n                  +46\n                ")
+      ])
     ])
   },
   function() {
@@ -41224,21 +41340,33 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Title")]),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("\n            Title\n          ")
+        ]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("\n            Price\n          ")
+        ]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Area")]),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("\n            Area\n          ")
+        ]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Address")]),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("\n            Address\n          ")
+        ]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("\n            Email\n          ")
+        ]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("\n            Name\n          ")
+        ]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("phoneNumber")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } })
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("\n            phoneNumber\n          ")
+        ])
       ])
     ])
   }
@@ -41272,7 +41400,7 @@ var render = function() {
       _c(
         "router-link",
         { staticClass: "btn btn-primary m-1", attrs: { to: "/listings" } },
-        [_vm._v("Listing")]
+        [_vm._v("\n    Listing\n  ")]
       )
     ],
     1

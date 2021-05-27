@@ -2,7 +2,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
-import Myheader from './components/MyHeader.vue'
+import MyHeader from './components/MyHeader.vue'
 import VueRouter from 'vue-router'
 import Vue from 'vue';
 import Swal from 'sweetalert2';
@@ -32,6 +32,6 @@ const app = new Vue({
     el: '#app',
     router,
     components: {
-        Myheader
+       "my-header" :MyHeader
     }
 });

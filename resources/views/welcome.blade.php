@@ -18,8 +18,7 @@
     <div id="app">
 
         <div class="container">
-            <Myheader>
-            </Myheader>
+            <my-header></my-header>
             <router-view></router-view>
         </div>
     </div>
