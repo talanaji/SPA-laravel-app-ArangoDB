@@ -5,7 +5,7 @@
       type="button"
       class="btn btn-primary"
       data-toggle="modal"
-      data-target="#exampleModal"
+      data-target="#addEditModal"
     >
       Add New Listing
     </button>
@@ -13,10 +13,10 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="addEditModal"
       tabindex="-1"
       role="dialog"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="addEditModalLabel"
       aria-hidden="true"
     >
       <div
@@ -28,14 +28,14 @@
             <h5
               v-if="edit"
               class="modal-title"
-              id="exampleModalLabel"
+              id="addEditModalLabel"
             >
               Update
             </h5>
             <h5
               v-else
               class="modal-title"
-              id="exampleModalLabel"
+              id="addEditModalLabel"
             >
               Add
             </h5>
@@ -210,15 +210,15 @@
                 type="button"
                 class="btn btn-primary"
                 data-toggle="modal"
-                data-target="#exampleModal"
-                @click="editListing(list)"
+                data-target="#addEditModal"
+                @click="editListing(l)"
               >
                 Edit
               </button>
               <button
                 type="button"
                 class="btn btn-danger"
-                @click="deleteListing(list)"
+                @click="deleteListing(l)"
               >
                 Delete
               </button>
@@ -230,81 +230,79 @@
   </div>
 </template> 
 <script>
-export default {
-  data() {
-    return {
-      list: {
-        id: "",
-        title: "",
-        price: "",
-        area: "",
-        address: "",
-        name: "",
-        email: "",
-        phoneNumber: "",
-      },
-      listings: {},
-      edit: false,
-      errors: [],
-    };
-  },
-  methods: {
-    createListing() {
-      this.edit = false;
-      axios.post("listAPI", this.list).then((response) => {
-        if (response.data.status == "error") {
-          this.errors = response.data.errors;
-        } else if (response.data.status == "success") {
-          console.log(response);
-          console.log("response.data");
-          console.log(response.data.data);
-          this.listings = response.data.data;
-          Toast.fire({
-            icon: "success",
-            title: "Inserted Successfully",
-          });
-          $("#exampleModal").modal("hide");
-        }
-      });
-    },
-    getListing() {
-      axios.get("listAPI").then((response) => {
-        this.listings = response.data.data;
-      });
-    },
-    editListing(list) {
-      this.list = list;
-      this.edit = true;
-    },
-    updateListing() {
-      axios.put("listAPI/" + this.list._key, this.list).then((response) => {
-        if (response.data.status != "200") {
-          this.errors = response.data.errors;
-        } else if (response.data.status == "200") {
-          Toast.fire({
-            icon: "success",
-            title: "Updated Successfully",
-          });
-          $("#exampleModal").modal("hide");
-        }
-      });
-    },
-    deleteListing(list) {
-      axios.delete("listAPI/" + list._key).then((response) => {
-        if (response.data.status != "200") {
-          this.errors = response.data.errors;
-        } else if (response.data.status == "200") {
-          this.listings.pop(list);
-          Toast.fire({
-            icon: "success",
-            title: "Deleted Successfully",
-          });
-        }
-      });
-    },
-  },
-  created() {
-    this.getListing();
-  },
-};
+	export default {
+		data() {
+			return {
+				list: {
+					id: "",
+					title: "",
+					price: "",
+					area: "",
+					address: "",
+					name: "",
+					email: "",
+					phoneNumber: "",
+				},
+				listings: {},
+				edit: false,
+				errors: [],
+			};
+		},
+		methods: {
+			async createListing() {
+				try {
+					var response = await axios.post("listAPI", this.list);
+					this.listings = response.data.data;
+					Toast.fire({
+						icon: "success",
+						title: "Inserted Successfully",
+					});
+					$("#addEditModal").modal("hide");
+				} catch (err) {
+					this.errors = response.data.errors;
+				}
+			},
+			async getListing() {
+				try {
+					var response = await axios.get("listAPI");
+					this.listings = response.data.data;
+				} catch (err) {
+					this.errors = response.data.errors;
+				}
+			},
+			editListing(list) {
+				this.list = list;
+				this.edit = true;
+			},
+			async updateListing() {
+				try {
+					var response = await axios.put("listAPI/" + this.list._key, this.list);
+					this.listings = response.data.data;
+					Toast.fire({
+						icon: "success",
+						title: "Updated Successfully",
+					});
+					$("#addEditModal").modal("hide");
+				} catch (err) {
+					this.errors = response.data.errors;
+				}
+			},
+			async deleteListing(list) {
+				try {
+					await axios.delete("listAPI/" + list._key);
+					this.getListing();
+					Toast.fire({
+						icon: "success",
+						title: "Deleted Successfully",
+					});
+					$("#addEditModal").modal("hide");
+				} catch (err) {
+					this.errors = err;
+				}
+			},
+		},
+		created() {
+			this.getListing();
+		},
+	};
 </script>
