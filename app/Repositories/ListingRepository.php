@@ -10,27 +10,26 @@ use ArangoDBClient\Document as ArangoDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Listings;
-use Illuminate\Support\Collection;
-use \DB;
-use App\Helper;
+use Illuminate\Support\Collection; 
+use App\Helpers\ArangoDBConnInterface;
 
 class ListingRepository
 {
     /**
     * @var ListingRepository
     */
-   protected $list;
-   protected $helper; 
+   protected $list; 
+   protected $conn; 
     
    /**
     * ListingRepository constructor.
     *
     * @param Listing $list
     */
-   public function __construct(Listings $list,Helper $helper)
+   public function __construct(Listings $list,ArangoDBConnInterface $helper)
    {
     $this->list = $list;
-    $this->helper = $helper;
+    $this->conn = $helper->conn();
    }
 
    /**
@@ -42,7 +41,7 @@ class ListingRepository
    {
        /*return $this->list
            ->get();*/
-           $collectionHandler = new ArangoCollectionHandler($this->helper->conn());
+           $collectionHandler = new ArangoCollectionHandler($this->conn);
 
            $cursor = $collectionHandler->byExample('listings', []);
            return $cursor->getAll();
@@ -70,7 +69,7 @@ class ListingRepository
     */
    public function save($data)
    {
-        $handler = new ArangoDocumentHandler($this->helper->conn());
+        $handler = new ArangoDocumentHandler($this->conn);
 
         // create a new document
         $list = new ArangoDocument();
@@ -112,7 +111,7 @@ class ListingRepository
         $list->name = $data['name'];
         $list->email = $data['email'];
         $list->phoneNumber = $data['phoneNumber'];  
-        $handler = new ArangoDocumentHandler($this->helper->conn());
+        $handler = new ArangoDocumentHandler($this->conn);
         $result =  $handler->updateById('listings', $id, $list);//update($list);
         
         $list = $handler->get('listings', $id); 
@@ -131,7 +130,7 @@ class ListingRepository
    {
     try { 
         
-        $handler = new ArangoDocumentHandler($this->helper->conn());
+        $handler = new ArangoDocumentHandler($this->conn);
          $listFromServer =  $handler->get('listings', $id);
 
         $result =  $handler->remove($listFromServer);

@@ -96,7 +96,11 @@ return [
             'endpoint'   => env('DB_ENDPOINT', 'tcp://localhost:8529'),
             'database'   => env('DB_DATABASE'),
             'AuthUser'   => env('DB_USERNAME'),
-            'AuthPasswd' => env('DB_PASSWORD'),
+            'AuthType' => env('OPTION_AUTH_TYPE'), 
+            'OptionConnection' => env('OPTION_CONNECTION'),
+            'OptionTimeout' => env('OPTION_TIMEOUT'),
+            'OptionReconnect' => env('OPTION_RECONNECT'),
+            'OptionCreate' => env('OPTION_CREATE'),
         ],
 
     ],

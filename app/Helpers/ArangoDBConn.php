@@ -1,5 +1,5 @@
 <?php 
-namespace App;
+namespace App\Helpers;
 
 use ArangoDBClient;
 use ArangoDBClient\Connection as ArangoConnection;
@@ -8,11 +8,11 @@ use ArangoDBClient\Document as ArangoDocument;
 use ArangoDBClient\ConnectException as ArangoConnectException;
 use ArangoDBClient\ClientException as ArangoClientException;
 use ArangoDBClient\ServerException as ArangoServerException; 
-use ArangoDBClient\UpdatePolicy as ArangoUpdatePolicy;
-use \DB;
+use ArangoDBClient\UpdatePolicy as ArangoUpdatePolicy; 
 use Config;
+use App\Helpers\ArangoDBConnInterface;
 
-Class Helper{ 
+Class ArangoDBConn implements  ArangoDBConnInterface{ 
 
     
     public function conn()
