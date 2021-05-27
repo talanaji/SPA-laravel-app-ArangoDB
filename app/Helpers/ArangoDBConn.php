@@ -19,7 +19,7 @@ class ArangoDBConn implements ArangoDBConnInterface
     {
         $connectionOptions = [
             // database name
-            ArangoConnectionOptions::OPTION_DATABASE =>Config::get('database.connections.arangodb.database'),
+            ArangoConnectionOptions::OPTION_DATABASE => Config::get('database.connections.arangodb.database'),
             // server endpoint to connect to
             ArangoConnectionOptions::OPTION_ENDPOINT => Config::get('database.connections.arangodb.endpoint'),
             // authorization type to use (currently supported: 'Basic')

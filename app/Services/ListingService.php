@@ -19,19 +19,11 @@ class ListingService
  
     public function deleteById($id)
     {
-        DB::beginTransaction();
-
         try {
             $list = $this->listRepository->delete($id);
         } catch (Exception $e) {
-            DB::rollBack();
-            Log::info($e->getMessage());
-
             throw new \InvalidArgumentException('Unable to delete list data');
         }
-
-        DB::commit();
-
         return $list;
     }
 
@@ -58,19 +50,11 @@ class ListingService
         if ($validator->fails()) {
             throw new InvalidArgumentException($validator->errors()->first());
         }
-
-        DB::beginTransaction();
-
         try {
             $list = $this->listRepository->update($data, $id);
         } catch (Exception $e) {
-            DB::rollBack();
-            Log::info($e->getMessage());
-
             throw new InvalidArgumentException('Unable to update list data');
         }
-
-        DB::commit();
 
         return $list;
     }

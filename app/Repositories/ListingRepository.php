@@ -40,13 +40,10 @@ class ListingRepository
      */
     public function getAll()
     {
-        /*return $this->list
-            ->get();*/
         $collectionHandler = new ArangoCollectionHandler($this->conn);
 
         $cursor = $collectionHandler->byExample('listings', []);
         return $cursor->getAll();
-        // return $handler->get('listings');
     }
 
     /**
@@ -57,9 +54,8 @@ class ListingRepository
      */
     public function getById($id)
     {
-        return $this->list
-           ->where('_key', $id)
-           ->get();
+        $handler = new ArangoDocumentHandler($this->conn);
+        return $userFromServer = $handler->get('listings', $id);
     }
 
     /**
@@ -100,6 +96,9 @@ class ListingRepository
      */
     public function update($data, $id)
     {
+        //print_r($this->conn);exit;
+        $handler = new ArangoDocumentHandler($this->conn);
+
         $list = new ArangoDocument();
         // $list = $handler->get('listings', $id);
 
@@ -111,12 +110,10 @@ class ListingRepository
         $list->name = $data['name'];
         $list->email = $data['email'];
         $list->phoneNumber = $data['phoneNumber'];
-        $handler = new ArangoDocumentHandler($this->conn);
         $result = $handler->updateById('listings', $id, $list);//update($list);
         
         $list = $handler->get('listings', $id);
-        return $this->list
-       ->get();
+        return $this->getAll();
     }
 
 
@@ -128,19 +125,9 @@ class ListingRepository
      */
     public function delete($id)
     {
-        try {
-            $handler = new ArangoDocumentHandler($this->conn);
-            $listFromServer = $handler->get('listings', $id);
-
-            $result = $handler->remove($listFromServer);
-            return $this->list
-           ->get();
-        } catch (ArangoConnectException $e) {
-            print 'Connection error: ' . $e->getMessage() . PHP_EOL;
-        } catch (ArangoClientException $e) {
-            print 'Client error: ' . $e->getMessage() . PHP_EOL;
-        } catch (ArangoServerException $e) {
-            print 'Server error: ' . $e->getServerCode() . ':' . $e->getServerMessage() . ' ' . $e->getMessage() . PHP_EOL;
-        }
+        $handler = new ArangoDocumentHandler($this->conn);
+        $listFromServer = $handler->get('listings', $id);
+        $result = $handler->remove($listFromServer);
+        return $this->getAll();
     }
 }

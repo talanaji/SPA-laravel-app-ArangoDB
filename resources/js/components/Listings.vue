@@ -277,6 +277,7 @@
 			async updateListing() {
 				try {
 					var response = await axios.put("listAPI/" + this.list._key, this.list);
+          console.log(response.data)
 					this.listings = response.data.data;
 					Toast.fire({
 						icon: "success",

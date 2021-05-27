@@ -2317,26 +2317,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 response = _context3.sent;
+                console.log(response.data);
                 _this3.listings = response.data.data;
                 Toast.fire({
                   icon: "success",
                   title: "Updated Successfully"
                 });
                 $("#addEditModal").modal("hide");
-                _context3.next = 12;
+                _context3.next = 13;
                 break;
 
-              case 9:
-                _context3.prev = 9;
+              case 10:
+                _context3.prev = 10;
                 _context3.t0 = _context3["catch"](0);
                 _this3.errors = response.data.errors;
 
-              case 12:
+              case 13:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 9]]);
+        }, _callee3, null, [[0, 10]]);
       }))();
     },
     deleteListing: function deleteListing(list) {
