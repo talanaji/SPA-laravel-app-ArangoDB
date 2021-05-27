@@ -1,10 +1,10 @@
 <?php
-namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Services\ListingService;
-use Illuminate\Support\Facades\Validator; 
-    
 
+namespace App\Http\Controllers;
+
+use App\Services\ListingService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ListingsController extends Controller
 {
@@ -67,7 +67,7 @@ class ListingsController extends Controller
             'address',
             'name',
             'email',
-            'phoneNumber' 
+            'phoneNumber'
         ]);
 
         $result = ['status' => 200];
@@ -82,7 +82,7 @@ class ListingsController extends Controller
         }
 
         // return response()->json($result, $result['status']);
-        return response()->json(['status'=>'success','data'=>$result['data']]);
+        return response()->json(['status' => 'success', 'data' => $result['data']]);
     }
 
     /**
@@ -105,7 +105,6 @@ class ListingsController extends Controller
         }
         return response()->json($result, $result['status']);
         //return response()->json(['status'=>'success','data'=>$result['data']]);
-
     }
 
     
@@ -118,7 +117,6 @@ class ListingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-            
         $data = $request->only([
             'title',
             'price',
@@ -126,15 +124,14 @@ class ListingsController extends Controller
             'address',
             'name',
             'email',
-            'phoneNumber' 
+            'phoneNumber'
         ]);
 
-        $result = ['status' => 200]; 
+        $result = ['status' => 200];
         
         
         try {
             $result['data'] = $this->listService->updateListing($data, $id);
-
         } catch (Exception $e) {
             $result = [
                 'status' => 500,
@@ -166,6 +163,5 @@ class ListingsController extends Controller
         }
         return response()->json($result, $result['status']);
         //return response()->json(['status'=>'success','data'=>$result['data']]);
-
     }
 }

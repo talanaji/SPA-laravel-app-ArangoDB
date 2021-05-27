@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Repositories\ListingRepository;
+use DB;
 use Illuminate\Support\Facades\Log;
-use \DB;
 
 use Illuminate\Support\Facades\Validator;
 
@@ -15,7 +15,7 @@ class ListingService
     public function __construct(ListingRepository $listRepository)
     {
         $this->listRepository = $listRepository;
-    } 
+    }
  
     public function deleteById($id)
     {
@@ -23,7 +23,6 @@ class ListingService
 
         try {
             $list = $this->listRepository->delete($id);
-
         } catch (Exception $e) {
             DB::rollBack();
             Log::info($e->getMessage());
@@ -34,7 +33,6 @@ class ListingService
         DB::commit();
 
         return $list;
-
     }
 
    
@@ -52,7 +50,6 @@ class ListingService
  
     public function updateListing($data, $id)
     {
-          
         $validator = Validator::make($data, [
             'title' => 'required|min:2',
             'email' => 'required|max:255'
@@ -65,9 +62,7 @@ class ListingService
         DB::beginTransaction();
 
         try {
-           
             $list = $this->listRepository->update($data, $id);
-         
         } catch (Exception $e) {
             DB::rollBack();
             Log::info($e->getMessage());
@@ -78,7 +73,6 @@ class ListingService
         DB::commit();
 
         return $list;
-
     }
 
     /**
@@ -100,8 +94,7 @@ class ListingService
         }
 
         $result = $this->listRepository->save($data);
-        $result= $this->getAll();
+        $result = $this->getAll();
         return $result;
     }
-
 }

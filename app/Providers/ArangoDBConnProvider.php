@@ -1,9 +1,11 @@
-<?php 
+<?php
+
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\Helpers\ArangoDBConn;
 use App\Helpers\ArangoDBConnInterface;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+
 class ArangoDBConnProvider extends ServiceProvider
 {
     protected $defer = true;
@@ -17,15 +19,12 @@ class ArangoDBConnProvider extends ServiceProvider
     }
     public function register()
     {
-        $this->app->bind('App\Helpers\ArangoDBConnInterface', function(){
-
+        $this->app->bind('App\Helpers\ArangoDBConnInterface', function () {
             return new ArangoDBConn();
-
         });
     }
     public function provides()
     {
         return ['App\Helpers\ArangoDBConnInterface'];
     }
- 
 }

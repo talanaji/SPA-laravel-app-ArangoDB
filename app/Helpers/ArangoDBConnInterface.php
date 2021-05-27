@@ -1,7 +1,8 @@
 <?php
+
 namespace App\Helpers;
 
-Interface ArangoDBConnInterface
+interface ArangoDBConnInterface
 {
     public function conn();
 }
