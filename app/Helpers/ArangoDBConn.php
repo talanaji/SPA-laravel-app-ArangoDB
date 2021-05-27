@@ -19,23 +19,23 @@ class ArangoDBConn implements ArangoDBConnInterface
     {
         $connectionOptions = [
             // database name
-            ArangoConnectionOptions::OPTION_DATABASE => env('DB_DATABASE'),
+            ArangoConnectionOptions::OPTION_DATABASE =>Config::get('database.connections.arangodb.database'),
             // server endpoint to connect to
-            ArangoConnectionOptions::OPTION_ENDPOINT => env('DB_ENDPOINT'),
+            ArangoConnectionOptions::OPTION_ENDPOINT => Config::get('database.connections.arangodb.endpoint'),
             // authorization type to use (currently supported: 'Basic')
-            ArangoConnectionOptions::OPTION_AUTH_TYPE => env('OPTION_AUTH_TYPE'),
+            ArangoConnectionOptions::OPTION_AUTH_TYPE => Config::get('database.connections.arangodb.auth_type'),
             // user for basic authorization
-            ArangoConnectionOptions::OPTION_AUTH_USER => env('DB_USERNAME'),
+            ArangoConnectionOptions::OPTION_AUTH_USER => Config::get('database.connections.arangodb.auth_user'),
             // password for basic authorization
-            ArangoConnectionOptions::OPTION_AUTH_PASSWD => env('DB_PASSWORD'),
+            ArangoConnectionOptions::OPTION_AUTH_PASSWD => Config::get('database.connections.arangodb.auth_passwd'),
             // connection persistence on server. can use either 'Close' (one-time connections) or 'Keep-Alive' (re-used connections)
-            ArangoConnectionOptions::OPTION_CONNECTION => env('OPTION_CONNECTION'),
+            ArangoConnectionOptions::OPTION_CONNECTION => Config::get('database.connections.arangodb.option_connection'),
             // connect timeout in seconds
-            ArangoConnectionOptions::OPTION_TIMEOUT => env('OPTION_TIMEOUT'),
+            ArangoConnectionOptions::OPTION_TIMEOUT => Config::get('database.connections.arangodb.option_timeout'),
             // whether or not to reconnect when a keep-alive connection has timed out on server
-            ArangoConnectionOptions::OPTION_RECONNECT => env('OPTION_RECONNECT'),
+            ArangoConnectionOptions::OPTION_RECONNECT => Config::get('database.connections.arangodb.option_reconnect'),
             // optionally create new collections when inserting documents
-            ArangoConnectionOptions::OPTION_CREATE => env('OPTION_CREATE'),
+            ArangoConnectionOptions::OPTION_CREATE => Config::get('database.connections.arangodb.option_create'),
             // optionally create new collections when inserting documents
             ArangoConnectionOptions::OPTION_UPDATE_POLICY => ArangoUpdatePolicy::LAST,
         ];
