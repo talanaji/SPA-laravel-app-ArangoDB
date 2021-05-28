@@ -13,8 +13,9 @@ use ArangoDBClient\DocumentHandler as ArangoDocumentHandler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
+use App\Repositories\ListingRepositoryInterface;
 
-class ListingRepository
+class ListingRepository implements ListingRepositoryInterface
 {
     /**
     * @var ListingRepository

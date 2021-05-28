@@ -1,12 +1,9 @@
 <?php
 
 namespace App\Services;
-
-use App\Repositories\ListingRepository;
-use DB;
 use Illuminate\Support\Facades\Log;
-
 use Illuminate\Support\Facades\Validator;
+use App\Repositories\ListingRepositoryInterface;
 
 class ListingService
 {
@@ -20,9 +17,9 @@ class ListingService
     /**
      * Constructor function
      *
-     * @param ListingRepository $listRepository
+     * @param ListingRepositoryInterface  $listRepository
      */
-    public function __construct(ListingRepository $listRepository)
+    public function __construct(ListingRepositoryInterface  $listRepository)
     {
         $this->listRepository = $listRepository;
     }

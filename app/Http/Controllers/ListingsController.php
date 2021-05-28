@@ -104,7 +104,7 @@ class ListingsController extends Controller
         } catch (Exception $e) {
             return response()->json(['status' => 'errors', 'errors' => $e->getMessage()]);
         }
-        return response()->json($result, $result['status']);
+        return response()->json(['status' => 'success', 'data' => $result['data']]);
     }
 
     
@@ -140,7 +140,7 @@ class ListingsController extends Controller
             return response()->json(['status' => 'errors', 'errors' => $e->getMessage()]);
         }
 
-        return response()->json($result, $result['status']);
+        return response()->json(['status' => 'success', 'data' => $result['data']]);
     }
 
     /**
@@ -158,6 +158,6 @@ class ListingsController extends Controller
         } catch (Exception $e) {
             return response()->json(['status' => 'errors', 'errors' => $e->getMessage()]);
         }
-        return response()->json($result, $result['status']);
+        return response()->json(['status' => 'success', 'data' => $result['data']]);
     }
 }
