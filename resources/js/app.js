@@ -7,6 +7,10 @@ import VueRouter from 'vue-router'
 import Vue from 'vue';
 import Swal from 'sweetalert2';
 import routes from './routes';
+
+/**
+ * Define Swal alert 
+ */
 window.Swal = Swal;
 const Toast = Swal.mixin({
     toast: true,
@@ -22,6 +26,9 @@ const Toast = Swal.mixin({
 });
 window.Toast = Toast;
 
+/**
+ * use vuerouter
+ */
 Vue.use(VueRouter);
 
 const router = new VueRouter({

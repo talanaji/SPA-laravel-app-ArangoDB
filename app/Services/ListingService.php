@@ -10,13 +10,29 @@ use Illuminate\Support\Facades\Validator;
 
 class ListingService
 {
+    /**
+     * ListingService variable
+     *
+     * @var [listingRespository]
+     */
     protected $listRepository;
 
+    /**
+     * Constructor function
+     *
+     * @param ListingRepository $listRepository
+     */
     public function __construct(ListingRepository $listRepository)
     {
         $this->listRepository = $listRepository;
     }
  
+    /**
+     * delete function
+     *
+     * @param [int] $id
+     * @return void
+     */
     public function deleteById($id)
     {
         try {
@@ -27,19 +43,37 @@ class ListingService
         return $list;
     }
 
-   
+   /**
+    * getAll function
+    * return all data 
+    *
+    * @return void
+    */
     public function getAll()
     {
         return $this->listRepository->getAll();
     }
 
- 
+    /**
+     * getById function
+     * 
+     * return specific list
+     *
+     * @param [int] $id
+     * @return void
+     */
     public function getById($id)
     {
         return $this->listRepository->getById($id);
     }
 
- 
+ /**
+  * updateListing function
+  *
+  * @param [array] $data
+  * @param [int] $id
+  * @return void
+  */
     public function updateListing($data, $id)
     {
         $validator = Validator::make($data, [
