@@ -252,22 +252,45 @@
 			async createListing() {
 				try {
 					var response = await axios.post("listAPI", this.list);
-					this.listings = response.data.data;
-					Toast.fire({
-						icon: "success",
-						title: "Inserted Successfully",
-					});
-					$("#addEditModal").modal("hide");
+					console.log(response);
+					if (response.data.status == "errors") {
+						this.errors = response.data.errors;
+						Toast.fire({
+							icon: "error",
+							title: "Oops...",
+						});
+					} else {
+						this.listings = response.data.data;
+						Toast.fire({
+							icon: "success",
+							title: "Inserted Successfully",
+						});
+						$("#addEditModal").modal("hide");
+					}
 				} catch (err) {
-					this.errors = response.data.errors;
+					//console.log(response)
+					this.errors = err;
 				}
 			},
 			async getListing() {
 				try {
 					var response = await axios.get("listAPI");
-					this.listings = response.data.data;
+					if (response.data.status == "errors") {
+						this.errors = response.data.errors;
+						Toast.fire({
+							icon: "error",
+							title: "Oops...",
+						});
+					} else {
+						this.listings = response.data.data;
+					}
 				} catch (err) {
-					this.errors = response.data.errors;
+					Toast.fire({
+						icon: "error",
+						title: "Oops...",
+						text: err,
+					});
+					this.errors = err;
 				}
 			},
 			editListing(list) {
@@ -277,27 +300,54 @@
 			async updateListing() {
 				try {
 					var response = await axios.put("listAPI/" + this.list._key, this.list);
-          console.log(response.data)
-					this.listings = response.data.data;
-					Toast.fire({
-						icon: "success",
-						title: "Updated Successfully",
-					});
-					$("#addEditModal").modal("hide");
+					if (response.data.status == "errors") {
+						this.errors = response.data.errors;
+						Toast.fire({
+							icon: "error",
+							title: "Oops...",
+						});
+					} else {
+						console.log(response.data);
+						this.listings = response.data.data;
+						Toast.fire({
+							icon: "success",
+							title: "Updated Successfully",
+						});
+						$("#addEditModal").modal("hide");
+					}
 				} catch (err) {
-					this.errors = response.data.errors;
+					Toast.fire({
+						icon: "error",
+						title: "Oops...",
+						text: err,
+					});
+					this.errors = err;
 				}
 			},
 			async deleteListing(list) {
 				try {
-					await axios.delete("listAPI/" + list._key);
-					this.getListing();
-					Toast.fire({
-						icon: "success",
-						title: "Deleted Successfully",
-					});
-					$("#addEditModal").modal("hide");
+					var response = await axios.delete("listAPI/" + list._key);
+
+					if (response.data.status == "errors") {
+						this.errors = response.data.errors;
+						Toast.fire({
+							icon: "error",
+							title: "Oops...",
+						});
+					} else {
+						this.getListing();
+						Toast.fire({
+							icon: "success",
+							title: "Deleted Successfully",
+						});
+						$("#addEditModal").modal("hide");
+					}
 				} catch (err) {
+					Toast.fire({
+						icon: "error",
+						title: "Oops...",
+						text: err,
+					});
 					this.errors = err;
 				}
 			},

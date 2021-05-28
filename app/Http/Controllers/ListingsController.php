@@ -69,16 +69,20 @@ class ListingsController extends Controller
             'email',
             'phoneNumber'
         ]);
+        $validator = Validator::make($data, [
+            'title' => 'required',
+            'email' => 'required'
+        ]);
 
+        if ($validator->fails()) {
+            return response()->json(['status' => 'errors', 'errors' => $validator->errors()]);
+        }
         $result = ['status' => 200];
 
         try {
             $result['data'] = $this->listService->saveListingData($data);
         } catch (Exception $e) {
-            $result = [
-                'status' => 500,
-                'error' => $e->getMessage()
-            ];
+            return response()->json(['status' => 'errors', 'errors' => $e->getMessage()]);
         }
 
         // return response()->json($result, $result['status']);
@@ -98,13 +102,9 @@ class ListingsController extends Controller
         try {
             $result['data'] = $this->listService->getById($id);
         } catch (Exception $e) {
-            $result = [
-                'status' => 500,
-                'error' => $e->getMessage()
-            ];
+            return response()->json(['status' => 'errors', 'errors' => $e->getMessage()]);
         }
         return response()->json($result, $result['status']);
-        //return response()->json(['status'=>'success','data'=>$result['data']]);
     }
 
     
@@ -126,21 +126,21 @@ class ListingsController extends Controller
             'email',
             'phoneNumber'
         ]);
+        $validator = Validator::make($data, [
+            'title' => 'required|min:2',
+            'email' => 'required|max:255'
+        ]);
 
-        $result = ['status' => 200];
-        
-        
+        if ($validator->fails()) {
+            return response()->json(['status' => 'errors', 'errors' => $validator->errors()]);
+        }
         try {
             $result['data'] = $this->listService->updateListing($data, $id);
         } catch (Exception $e) {
-            $result = [
-                'status' => 500,
-                'error' => $e->getMessage()
-            ];
+            return response()->json(['status' => 'errors', 'errors' => $e->getMessage()]);
         }
 
         return response()->json($result, $result['status']);
-        //return response()->json(['status'=>'success','data'=>$result['data']]);
     }
 
     /**
@@ -156,12 +156,8 @@ class ListingsController extends Controller
         try {
             $result['data'] = $this->listService->deleteById($id);
         } catch (Exception $e) {
-            $result = [
-                'status' => 500,
-                'error' => $e->getMessage()
-            ];
+            return response()->json(['status' => 'errors', 'errors' => $e->getMessage()]);
         }
         return response()->json($result, $result['status']);
-        //return response()->json(['status'=>'success','data'=>$result['data']]);
     }
 }

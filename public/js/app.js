@@ -1867,6 +1867,10 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
+/**
+ * Define Swal alert 
+ */
+
 window.Swal = (sweetalert2__WEBPACK_IMPORTED_MODULE_1___default());
 var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().mixin({
   toast: true,
@@ -1880,6 +1884,10 @@ var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().mixin({
   }
 });
 window.Toast = Toast;
+/**
+ * use vuerouter
+ */
+
 vue__WEBPACK_IMPORTED_MODULE_3__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_4__.default);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
   mode: 'history',
@@ -2249,26 +2257,38 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 response = _context.sent;
-                _this.listings = response.data.data;
-                Toast.fire({
-                  icon: "success",
-                  title: "Inserted Successfully"
-                });
-                $("#addEditModal").modal("hide");
-                _context.next = 12;
+                console.log(response);
+
+                if (response.data.status == "errors") {
+                  _this.errors = response.data.errors;
+                  Toast.fire({
+                    icon: "error",
+                    title: "Oops..."
+                  });
+                } else {
+                  _this.listings = response.data.data;
+                  Toast.fire({
+                    icon: "success",
+                    title: "Inserted Successfully"
+                  });
+                  $("#addEditModal").modal("hide");
+                }
+
+                _context.next = 11;
                 break;
 
-              case 9:
-                _context.prev = 9;
+              case 8:
+                _context.prev = 8;
                 _context.t0 = _context["catch"](0);
-                _this.errors = response.data.errors;
+                //console.log(response)
+                _this.errors = _context.t0;
 
-              case 12:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 9]]);
+        }, _callee, null, [[0, 8]]);
       }))();
     },
     getListing: function getListing() {
@@ -2286,16 +2306,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 response = _context2.sent;
-                _this2.listings = response.data.data;
-                _context2.next = 10;
+
+                if (response.data.status == "errors") {
+                  _this2.errors = response.data.errors;
+                  Toast.fire({
+                    icon: "error",
+                    title: "Oops..."
+                  });
+                } else {
+                  _this2.listings = response.data.data;
+                }
+
+                _context2.next = 11;
                 break;
 
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                _this2.errors = response.data.errors;
+                Toast.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: _context2.t0
+                });
+                _this2.errors = _context2.t0;
 
-              case 10:
+              case 11:
               case "end":
                 return _context2.stop();
             }
@@ -2322,33 +2357,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 response = _context3.sent;
-                console.log(response.data);
-                _this3.listings = response.data.data;
-                Toast.fire({
-                  icon: "success",
-                  title: "Updated Successfully"
-                });
-                $("#addEditModal").modal("hide");
-                _context3.next = 13;
+
+                if (response.data.status == "errors") {
+                  _this3.errors = response.data.errors;
+                  Toast.fire({
+                    icon: "error",
+                    title: "Oops..."
+                  });
+                } else {
+                  console.log(response.data);
+                  _this3.listings = response.data.data;
+                  Toast.fire({
+                    icon: "success",
+                    title: "Updated Successfully"
+                  });
+                  $("#addEditModal").modal("hide");
+                }
+
+                _context3.next = 11;
                 break;
 
-              case 10:
-                _context3.prev = 10;
+              case 7:
+                _context3.prev = 7;
                 _context3.t0 = _context3["catch"](0);
-                _this3.errors = response.data.errors;
+                Toast.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: _context3.t0
+                });
+                _this3.errors = _context3.t0;
 
-              case 13:
+              case 11:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 10]]);
+        }, _callee3, null, [[0, 7]]);
       }))();
     },
     deleteListing: function deleteListing(list) {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
@@ -2358,19 +2409,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return axios["delete"]("listAPI/" + list._key);
 
               case 3:
-                _this4.getListing();
+                response = _context4.sent;
 
-                Toast.fire({
-                  icon: "success",
-                  title: "Deleted Successfully"
-                });
-                $("#addEditModal").modal("hide");
+                if (response.data.status == "errors") {
+                  _this4.errors = response.data.errors;
+                  Toast.fire({
+                    icon: "error",
+                    title: "Oops..."
+                  });
+                } else {
+                  _this4.getListing();
+
+                  Toast.fire({
+                    icon: "success",
+                    title: "Deleted Successfully"
+                  });
+                  $("#addEditModal").modal("hide");
+                }
+
                 _context4.next = 11;
                 break;
 
-              case 8:
-                _context4.prev = 8;
+              case 7:
+                _context4.prev = 7;
                 _context4.t0 = _context4["catch"](0);
+                Toast.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: _context4.t0
+                });
                 _this4.errors = _context4.t0;
 
               case 11:
@@ -2378,7 +2445,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 8]]);
+        }, _callee4, null, [[0, 7]]);
       }))();
     }
   },
