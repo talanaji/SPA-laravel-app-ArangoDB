@@ -1,19 +1,20 @@
-<?php 
+<?php
+
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use App\Repositories\ListingRepositoryInterface;
 use App\Repositories\ListingRepository;
+use App\Repositories\ListingRepositoryInterface;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
-class RepositoryServiceProvider extends ServiceProvider 
-{ 
-   /** 
-    * Register services. 
-    * 
-    * @return void  
-    */ 
-   public function register() 
-   { 
-       $this->app->bind(ListingRepositoryInterface::class, ListingRepository::class);
-   }
+class RepositoryServiceProvider extends ServiceProvider
+{
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->bind(ListingRepositoryInterface::class, ListingRepository::class);
+    }
 }

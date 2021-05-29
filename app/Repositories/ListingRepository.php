@@ -6,6 +6,7 @@ use App\Helpers\ArangoDBConnInterface;
 
 use App\Models\Listings;
 
+use App\Repositories\ListingRepositoryInterface;
 use ArangoDBClient;
 use ArangoDBClient\CollectionHandler as ArangoCollectionHandler;
 use ArangoDBClient\Document as ArangoDocument;
@@ -13,7 +14,6 @@ use ArangoDBClient\DocumentHandler as ArangoDocumentHandler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
-use App\Repositories\ListingRepositoryInterface;
 
 class ListingRepository implements ListingRepositoryInterface
 {
@@ -84,9 +84,7 @@ class ListingRepository implements ListingRepositoryInterface
         
         // send the document to the server
         $id = $handler->save('listings', $list);
-         
-
-        return $list->getId();
+        return $this->getAll();
     }
 
     /**

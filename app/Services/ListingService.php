@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Services;
+
+use App\Repositories\ListingRepositoryInterface;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use App\Repositories\ListingRepositoryInterface;
 
 class ListingService
 {
@@ -32,8 +33,7 @@ class ListingService
      */
     public function deleteById($id)
     {
-        $list = $this->listRepository->delete($id);
-        return $list;
+        return $this->listRepository->delete($id);
     }
 
     /**
@@ -69,8 +69,7 @@ class ListingService
      */
     public function updateListing($data, $id)
     {
-        $list = $this->listRepository->update($data, $id);
-        return $list;
+        return $this->listRepository->update($data, $id);
     }
 
     /**
@@ -82,8 +81,6 @@ class ListingService
      */
     public function saveListingData($data)
     {
-        $result = $this->listRepository->save($data);
-        $result = $this->getAll();
-        return $result;
+        return $this->listRepository->save($data);
     }
 }

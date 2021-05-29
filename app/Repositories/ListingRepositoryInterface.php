@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Repositories;
- 
 
 interface ListingRepositoryInterface
 {
@@ -39,5 +38,5 @@ interface ListingRepositoryInterface
      * @param [int] $id
      * @return void
      */
-    public function delete($id) ;
+    public function delete($id);
 }
