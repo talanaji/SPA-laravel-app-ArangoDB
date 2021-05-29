@@ -19,4 +19,4 @@ Route::get('/', function () {
 Route::get('/listings', function () {
     return view('welcome');
 });
-Route::resource('listAPI', 'App\Http\Controllers\ListingsController');
+Route::resource('listAPI', 'App\Http\Controllers\ListingsController')->middleware('apiaccess');

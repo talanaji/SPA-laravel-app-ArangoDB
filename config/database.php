@@ -91,13 +91,13 @@ return [
             'prefix_indexes' => true,
         ],
         'arangodb' => [
-            'name'       => 'arangodb',
-            'driver'     => 'arangodb',
-            'endpoint'   => env('DB_ENDPOINT', 'tcp://localhost:8529'),
-            'database'   => env('DB_DATABASE'),
-            'auth_user'   => env('DB_USERNAME'),
-            'auth_passwd'   => env('DB_PASSWORD'),
-            'auth_type' => env('OPTION_AUTH_TYPE'), 
+            'name' => 'arangodb',
+            'driver' => 'arangodb',
+            'endpoint' => env('DB_ENDPOINT', 'tcp://localhost:8529'),
+            'database' => env('DB_DATABASE'),
+            'auth_user' => env('DB_USERNAME'),
+            'auth_passwd' => env('DB_PASSWORD'),
+            'auth_type' => env('OPTION_AUTH_TYPE'),
             'option_connection' => env('OPTION_CONNECTION'),
             'option_timeout' => env('OPTION_TIMEOUT'),
             'option_reconnect' => env('OPTION_RECONNECT'),
@@ -136,7 +136,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [

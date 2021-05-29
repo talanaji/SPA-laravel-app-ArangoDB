@@ -1,8 +1,8 @@
 <?php
 
-use LaravelFreelancerNL\Migrations\MigrationCreator; 
 use LaravelFreelancerNL\Aranguent\Facades\Schema;
 use LaravelFreelancerNL\Aranguent\Schema\Blueprint;
+use LaravelFreelancerNL\Migrations\MigrationCreator;
 
 class CreateListingsTable extends Migration
 {

@@ -1,4 +1,3 @@
-
 require('./bootstrap');
 
 window.Vue = require('vue').default;
@@ -32,13 +31,19 @@ window.Toast = Toast;
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-    mode: 'history', routes
+    mode: 'history',
+    routes
 })
 
 const app = new Vue({
     el: '#app',
     router,
+    data() {
+        return {
+            app_name: process.env.MIX_APP_NAME,
+        }
+    },
     components: {
-       "my-header" :MyHeader
+        "my-header": MyHeader
     }
 });

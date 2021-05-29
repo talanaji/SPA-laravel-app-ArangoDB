@@ -1859,6 +1859,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
+/* provided dependency */ var process = __webpack_require__(/*! process/browser */ "./node_modules/process/browser.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
@@ -1896,6 +1897,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
 var app = new vue__WEBPACK_IMPORTED_MODULE_3__.default({
   el: '#app',
   router: router,
+  data: function data() {
+    return {
+      app_name: process.env.MIX_APP_NAME
+    };
+  },
   components: {
     "my-header": _components_MyHeader_vue__WEBPACK_IMPORTED_MODULE_0__.default
   }
@@ -2226,6 +2232,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      app_token: "ABC",
       list: {
         id: "",
         title: "",
@@ -2253,7 +2260,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios.post("listAPI", _this.list);
+                return axios.post("listAPI", _this.list, {
+                  headers: {
+                    app_token: _this.app_token
+                  }
+                });
 
               case 3:
                 response = _context.sent;
@@ -2302,7 +2313,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return axios.get("listAPI");
+                return axios.get("listAPI", {
+                  headers: {
+                    app_token: _this2.app_token
+                  }
+                });
 
               case 3:
                 response = _context2.sent;
@@ -2353,7 +2368,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return axios.put("listAPI/" + _this3.list._key, _this3.list);
+                return axios.put("listAPI/" + _this3.list._key, _this3.list, {
+                  headers: {
+                    app_token: _this3.app_token
+                  }
+                });
 
               case 3:
                 response = _context3.sent;
@@ -2406,7 +2425,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return axios["delete"]("listAPI/" + list._key);
+                return axios["delete"]("listAPI/" + list._key, {
+                  headers: {
+                    app_token: _this4.app_token
+                  }
+                });
 
               case 3:
                 response = _context4.sent;

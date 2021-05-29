@@ -233,6 +233,7 @@
 	export default {
 		data() {
 			return {
+				app_token: process.env.MIX_APP_TOKEN,
 				list: {
 					id: "",
 					title: "",
@@ -251,7 +252,11 @@
 		methods: {
 			async createListing() {
 				try {
-					var response = await axios.post("listAPI", this.list);
+					var response = await axios.post("listAPI", this.list, {
+						headers: {
+							app_token: this.app_token,
+						},
+					});
 					console.log(response);
 					if (response.data.status == "errors") {
 						this.errors = response.data.errors;
@@ -274,7 +279,11 @@
 			},
 			async getListing() {
 				try {
-					var response = await axios.get("listAPI");
+					var response = await axios.get("listAPI", {
+						headers: {
+							app_token: this.app_token,
+						},
+					});
 					if (response.data.status == "errors") {
 						this.errors = response.data.errors;
 						Toast.fire({
@@ -299,7 +308,11 @@
 			},
 			async updateListing() {
 				try {
-					var response = await axios.put("listAPI/" + this.list._key, this.list);
+					var response = await axios.put("listAPI/" + this.list._key, this.list, {
+						headers: {
+							app_token: this.app_token,
+						},
+					});
 					if (response.data.status == "errors") {
 						this.errors = response.data.errors;
 						Toast.fire({
@@ -326,7 +339,11 @@
 			},
 			async deleteListing(list) {
 				try {
-					var response = await axios.delete("listAPI/" + list._key);
+					var response = await axios.delete("listAPI/" + list._key, {
+						headers: {
+							app_token: this.app_token,
+						},
+					});
 
 					if (response.data.status == "errors") {
 						this.errors = response.data.errors;
